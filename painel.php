@@ -1,3 +1,17 @@
+<?php
+
+  $nomeUsuario =  $_POST['nome'];
+  $senha =        $_POST['senha'];
+
+ 
+  if($nomeUsuario == "claudio" && $senha == "123"){ 
+    
+  }else{ 
+    header('Location: index.php?msg=erro');
+  }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -42,8 +56,6 @@
       </div>
     </div>
   </div>
-
-
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
