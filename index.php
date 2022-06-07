@@ -27,14 +27,14 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="border m-4 p-4" style="max-width: 380px;">
-        <form action="./painel.php" method="POST">
+        <form action="./entrar.php" method="POST">
           <div class="mb-3">
             <label for="nome" class="form-label">Usuario</label>
             <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="senha">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha" name="senha">
           </div>
             <?php 
             if(isset($_GET['msg']) && $_GET['msg'] == "erro"){ ?>

@@ -7,24 +7,9 @@ session_start();
 $localhost = "localhost";
 $user = "root";
 $pass = "";
-$db = "";
-
-// $localhost = "localhost";
-// $user = "";
-// $pass = "";
-// $db = "";
+$db = "painel-bea";
 
 global $pdo;
-
-// try {
-//     $pdo = new PDO("mysql:host={$localhost};dbname={$db}", $user, $pass);
-//     $sql = $pdo->query("SELECT * FROM tb_denuncias");
-
-// } catch (PDOException $e) { // se der erro, o erro será armazenado em $e
-//     print "Error!: " . $e->getMessage() . "<br/>";
-//     die();
-// }
-
 
 try {
   $pdo = new PDO(

@@ -4,11 +4,11 @@
   $senha =        $_POST['senha'];
 
  
-  if($nomeUsuario == "claudio" && $senha == "123"){ 
+  // if($nomeUsuario == "claudio" && $senha == "123"){ 
     
-  }else{ 
-    header('Location: index.php?msg=erro');
-  }
+  // }else{ 
+  //   header('Location: index.php?msg=erro');
+  // }
 
 ?>
 
