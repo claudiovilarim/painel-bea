@@ -30,11 +30,11 @@
         <form action="./controller/entrar.php" method="POST">
           <div class="mb-3">
             <label for="nome" class="form-label">Usuario</label>
-            <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha" name="senha">
+            <input type="password" class="form-control" id="senha" name="senha" required>
           </div>
             <?php 
             if(isset($_GET['msg']) && $_GET['msg'] == "erro"){ ?>

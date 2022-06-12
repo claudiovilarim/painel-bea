@@ -5,6 +5,8 @@ require '../model/Usuario.class.php';
 
 $usuario = new Usuario();
 
-$usuario->login($_POST['nome'], $_POST['senha']);
-
-header('Location: ../view/painel.php');
+if($usuario->login($_POST['nome'], $_POST['senha']) == true){
+    header('Location: ../view/painel.php');
+}else{
+    header('Location: ../index.php?msg=erro');
+}

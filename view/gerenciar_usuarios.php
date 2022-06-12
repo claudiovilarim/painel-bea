@@ -1,6 +1,6 @@
 <?php
 
-require '../controller/verifyLogin.php';
+require '../controller/verificarLogin.php';
 
 ?>
 
@@ -47,7 +47,7 @@ require '../controller/verifyLogin.php';
 
   <div class="container">
     <h2>Lista de usuários</h2>
-    <button class="btn btn-success">Adicionar Usuário <i class="fas fa-plus"></i></button>
+    <a href="./usuario_criar.php" class="btn btn-success">Adicionar Usuário <i class="fas fa-plus"></i></a>
     <?php
     $pdo_stmt = $pdo->prepare("SELECT * FROM tb_usuarios");
     $pdo_stmt->execute();

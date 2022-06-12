@@ -1,6 +1,6 @@
 <?php
 
-require '../controller/verifyLogin.php';
+require '../controller/verificarLogin.php';
     
 ?>
 

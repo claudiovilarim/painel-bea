@@ -23,11 +23,8 @@ class Usuario {
 
         if($sql->rowCount() > 0){
             $dados = $sql->fetch(); // fetch cria um array que recebe todos os dados dessa tabela tb_usuarios
-            echo $dados['id'];
-
             $_SESSION['id_usuario'] = $dados['id'];
             $_SESSION['login'] = '1';
-
             return true;
         }else{
             return false;
@@ -40,7 +37,7 @@ class Usuario {
         header('Location: ../index.php');
     }
 
-    public function verificaLogin()
+    public function verificarLogin()
     {
         if($_SESSION['login'] != '1'){
             header('Location: ../index.php');
@@ -70,6 +67,30 @@ class Usuario {
         $sql = "DELETE FROM tb_usuarios WHERE id = :id";
         $sql = $pdo->prepare($sql);
         $sql->bindValue("id", $id);
+        $sql->execute();
+    }
+
+    public function editar($id, $nome, $senha)
+    {
+        global $pdo;
+
+        $sql = "UPDATE tb_usuarios SET nome = :nome, senha = :senha WHERE id = :id";
+        $sql = $pdo->prepare($sql);
+        $sql->bindValue("id", $id);
+        $sql->bindValue("nome", $nome);
+        $sql->bindValue("senha", $senha);
+        $sql->execute();
+    }
+
+    public function criar($nome, $senha, $administrador)
+    {
+        global $pdo;
+        
+        $sql = "INSERT INTO tb_usuarios (nome, senha, admin) VALUES (:nome, :senha, :admin)";
+        $sql = $pdo->prepare($sql);
+        $sql->bindValue("nome", $nome);
+        $sql->bindValue("senha", $senha);
+        $sql->bindValue("admin", $administrador);
         $sql->execute();
     }
 

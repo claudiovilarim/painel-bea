@@ -46,17 +46,20 @@ require '../controller/verificarLogin.php';
   </nav>
 
   <div class="container">
-    <h2>Excluir usuário</h2>
+    <h2>Editar usuário</h2>
     <?php
     $pdo_stmt = $pdo->prepare("SELECT * FROM tb_usuarios WHERE id = ?");
     $pdo_stmt->execute([$_GET['id']]);
     $result = $pdo_stmt->fetchAll();
     ?>
-    <form action="../controller/usuarioExcluir.php?id=<?= $_GET['id'] ?>" method="POST">
+    <form action="../controller/usuarioEditar.php?id=<?= $_GET['id'] ?>" method="POST">
       <div class="form-group">
+        <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $result[0]['nome'] ?>" readonly>
-        <button type="submit" class="btn btn-danger mt-3">Excluir</button>
+        <input type="text" class="form-control" id="nome" name="nome" value="<?= $result[0]['nome'] ?>" required>
+        <label for="senha">Nova senha</label>
+        <input type="text" class="form-control" id="senha" name="senha" required>
+        <button type="submit" class="btn btn-primary mt-3">Confirmar</button>
       </div>
     </form>
     
