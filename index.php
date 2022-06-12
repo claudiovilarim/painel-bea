@@ -27,7 +27,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="border m-4 p-4" style="max-width: 380px;">
-        <form action="./entrar.php" method="POST">
+        <form action="./controller/entrar.php" method="POST">
           <div class="mb-3">
             <label for="nome" class="form-label">Usuario</label>
             <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp">
@@ -45,9 +45,6 @@
       </div>
     </div>
   </div>
-
-
-
 
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
