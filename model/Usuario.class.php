@@ -9,6 +9,11 @@ class Usuario {
         
     }
 
+    public function getNome() {
+        return $this->nome;
+    }
+
+
     public function login($nome, $senha)
     {
         global $pdo;
@@ -17,14 +22,16 @@ class Usuario {
         
         $sql = $pdo->prepare($sql);
         $sql->bindValue("nome", $nome);
-        //$sql->bindValue("senha", md5($senha));
-        $sql->bindValue("senha", $senha);
+        $sql->bindValue("senha", md5($senha));
+        // $sql->bindValue("senha", $senha);
         $sql->execute();
 
         if($sql->rowCount() > 0){
             $dados = $sql->fetch(); // fetch cria um array que recebe todos os dados dessa tabela tb_usuarios
             $_SESSION['id_usuario'] = $dados['id'];
             $_SESSION['login'] = '1';
+            $_SESSION['nomeUsuario'] = $dados['nome'];
+            $_SESSION['ad'] = $dados['admin'];
             return true;
         }else{
             return false;
@@ -41,6 +48,15 @@ class Usuario {
     {
         if($_SESSION['login'] != '1'){
             header('Location: ../index.php');
+        }
+    }
+
+    public function isAdmin()
+    {
+        if($_SESSION['isAdmin'] == '1'){
+            return true;
+        }else{
+            return false;
         }
     }
 
@@ -70,15 +86,15 @@ class Usuario {
         $sql->execute();
     }
 
-    public function editar($id, $nome, $senha)
+    public function editar($id, $nome, $senha, $isAdmin)
     {
         global $pdo;
 
-        $sql = "UPDATE tb_usuarios SET nome = :nome, senha = :senha WHERE id = :id";
+        $sql = "UPDATE tb_usuarios SET nome = :nome, senha = :senha, admin = :isAdmin WHERE id = $id";
         $sql = $pdo->prepare($sql);
-        $sql->bindValue("id", $id);
-        $sql->bindValue("nome", $nome);
-        $sql->bindValue("senha", $senha);
+        $sql->bindValue("nome", $nome); 
+        $sql->bindValue("senha", md5($senha));
+        $sql->bindValue("isAdmin", $isAdmin);
         $sql->execute();
     }
 
@@ -89,7 +105,7 @@ class Usuario {
         $sql = "INSERT INTO tb_usuarios (nome, senha, admin) VALUES (:nome, :senha, :admin)";
         $sql = $pdo->prepare($sql);
         $sql->bindValue("nome", $nome);
-        $sql->bindValue("senha", $senha);
+        $sql->bindValue("senha", md5($senha));
         $sql->bindValue("admin", $administrador);
         $sql->execute();
     }

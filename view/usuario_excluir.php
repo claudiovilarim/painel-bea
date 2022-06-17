@@ -1,6 +1,7 @@
 <?php
 
 require '../controller/verificarLogin.php';
+require '../controller/verificarAdmin.php';
 
 ?>
 
@@ -19,31 +20,14 @@ require '../controller/verificarLogin.php';
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   <!-- browser logo -->
-  <link rel="icon" href="../assets/images/email.png">
+  <link rel="icon" href="../assets/images/rel_logo.png">
 
   <title>Painel B&A</title>
 </head>
 
 <body>
 
-  <nav class="navbar bg-azul">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="../assets/images/logo_bea.png" alt="" height="50" class="d-inline-block align-text-top">
-      </a>
-      <div>
-        <a class="nav-item nav-link" href="#">
-          <img src="../assets/images/user.png" alt="" height="50" class="d-inline-block align-text-top">
-        </a>
-      </div>
-      <div>
-        <a class="nav-item nav-link text-white" href="./">Gerencia Usuários</a>
-      </div>
-      <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link text-white" href="#">Sair</a>
-      </div>
-    </div>
-  </nav>
+  <?php include './navBar.php'; ?>
 
   <div class="container">
     <h2>Excluir usuário</h2>
@@ -59,7 +43,7 @@ require '../controller/verificarLogin.php';
         <button type="submit" class="btn btn-danger mt-3">Excluir</button>
       </div>
     </form>
-    
+
   </div>
 
 

@@ -27,26 +27,20 @@ require '../controller/verificarAdmin.php';
 
 <body>
 
-  <?php include './navBar.php'; ?>
+<?php include './navBar.php'; ?>
 
   <div class="container">
-    <h2>Criar usuário</h2>
-    <?php
-    // $pdo_stmt = $pdo->prepare("SELECT * FROM tb_usuarios WHERE id = ?");
-    // $pdo_stmt->execute([$_GET['id']]);
-    // $result = $pdo_stmt->fetchAll();
-    ?>
-    <form action="../controller/usuarioCriar.php" method="POST">
+    <h2>Criar item</h2>
+    <form action="../controller/itemCriar.php" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome" required>
-        <label for="senha">Senha</label>
-        <input type="text" class="form-control" id="senha" name="senha" required>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="administrador" name="administrador">
-          <label class="form-check-label" for="administrador">Administrador</label>
-        </div>
+        <input type="text" class="form-control" id="nome" name="nome" autocomplete="off" required>
+        <label for="link">Link</label>
+        <input type="text" class="form-control" id="link" name="link" autocomplete="off" required>
+        <label for="imagem">Imagem</label>
+        <input type="file" class="form-control mt-2" id="imagem" name="imagem" required>
+
         <button type="submit" class="btn btn-primary mt-3">Confirmar</button>
       </div>
     </form>
