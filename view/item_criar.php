@@ -34,17 +34,26 @@ require '../controller/verificarAdmin.php';
     <form action="../controller/itemCriar.php" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
-        <label for="nome">Nome</label>
+        <label for="nome" class="mt-2">Nome</label>
         <input type="text" class="form-control" id="nome" name="nome" autocomplete="off" required>
-        <label for="link">Link</label>
+        <label for="link" class="mt-2">Link</label>
         <input type="text" class="form-control" id="link" name="link" autocomplete="off" required>
-        <label for="imagem">Imagem</label>
+        <label for="imagem" class="mt-2">Imagem</label>
         <input type="file" class="form-control mt-2" id="imagem" name="imagem" required>
 
         <button type="submit" class="btn btn-primary mt-3">Confirmar</button>
       </div>
     </form>
   </div>
+
+  <script>
+    // disable button submit after submit
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.querySelector('button').disabled = true;
+      document.querySelector('form').submit();
+    });
+  </script>
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

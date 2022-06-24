@@ -29,7 +29,7 @@
       <div class="border m-4 p-4" style="max-width: 380px;">
         <form action="./controller/entrar.php" method="POST">
           <div class="mb-3">
-            <label for="nome" class="form-label">Usuario</label>
+            <label for="nome" class="form-label">Usuário</label>
             <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">

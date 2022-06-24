@@ -7,4 +7,3 @@ $usuario = new Usuario();
 
 $usuario->excluir($_GET['id']);
 
-header('Location: ../view/gerenciar_usuarios.php');

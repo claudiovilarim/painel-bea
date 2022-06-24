@@ -18,13 +18,9 @@ if(isset($_POST['nome']) && isset($_POST['link'])){
 
   $allowed = array('jpg', 'jpeg', 'png');
 
-  // echo "<pre>";
-  // var_dump($_FILES);
-  // echo "</pre>";
-
   if(in_array($fileActualExt, $allowed)){
     if($fileError === 0){
-      if($fileSize < 1000000){
+      if($fileSize < 20000000){
         $fileNameNew = uniqid('', true).".".$fileActualExt;
         $fileDestination = '../assets/images/'.$fileNameNew;
         move_uploaded_file($fileTmpName, $fileDestination);

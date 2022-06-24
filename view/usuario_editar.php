@@ -39,12 +39,19 @@ require '../controller/verificarAdmin.php';
     <form action="../controller/usuarioEditar.php?id=<?= $_GET['id'] ?>" method="POST">
       <div class="form-group">
         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
-        <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome" value="<?= $result[0]['nome'] ?>" required>
-        <label for="senha">Nova senha</label>
-        <input type="text" class="form-control" id="senha" name="senha" required>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="administrador" name="administrador">
+        <label for="nome" class="mt-2">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" value="<?= $result[0]['nome'] ?>" autocomplete="off" required>
+        <label for="senha" class="mt-2">Nova senha</label>
+        <input type="text" class="form-control" id="senha" name="senha" autocomplete="off" required>
+        <div class="form-check form-switch mt-2">
+          <?php 
+          if ($result[0]['admin'] == '1') {
+            echo '<input type="checkbox" class="form-check-input" id="administrador" name="administrador" checked>';
+          } else {
+            echo '<input type="checkbox" class="form-check-input" id="administrador" name="administrador">';
+          }
+          ?>
+          
           <label class="form-check-label" for="administrador">Administrador</label>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Confirmar</button>

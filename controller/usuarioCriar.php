@@ -12,4 +12,4 @@ if(isset($_POST['administrador'])){
 }
 $usuario->criar($_POST['nome'], $_POST['senha'], $isAdmin);
 
-header('Location: ../view/gerenciar_usuarios.php');
+//header('Location: ../view/gerenciar_usuarios.php');

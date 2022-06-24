@@ -29,11 +29,20 @@ require '../controller/verificarAdmin.php';
 
   <?php include './navBar.php'; ?>
 
+  <?php
+  if ($_GET['erro'] == '1') {
+    echo '<div class="alert alert-danger" role="alert">
+            <strong>Erro!</strong> Você não pode excluir seu próprio usuário.
+          </div>';
+  }
+  ?>
+
+
   <div class="container">
     <h2>Lista de usuários</h2>
     <a href="./usuario_criar.php" class="btn btn-success">Adicionar Usuário <i class="fas fa-plus"></i></a>
     <?php
-    $pdo_stmt = $pdo->prepare("SELECT * FROM tb_usuarios");
+    $pdo_stmt = $pdo->prepare("SELECT * FROM tb_usuarios ORDER BY nome ASC");
     $pdo_stmt->execute();
     $usuarios = $pdo_stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
@@ -53,8 +62,8 @@ require '../controller/verificarAdmin.php';
                 <td><?php echo $usuario['nome']; ?></td>
                 <td><?php echo $usuario['admin'] == 1 ? 'Administrador' : ''; ?></td>
                 <td>
-                  <a href="./usuario_editar.php?id=<?php echo $usuario['id']; ?>" class="btn btn-primary">Editar</a>
-                  <a href="./usuario_excluir.php?id=<?php echo $usuario['id']; ?>" class="btn btn-danger">Excluir</a>
+                  <a href="./usuario_editar.php?id=<?php echo $usuario['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
+                  <a href="./usuario_excluir.php?id=<?php echo $usuario['id']; ?>" class="btn btn-sm btn-danger">Excluir</a>
                 </td>
               </tr>
             <?php } ?>

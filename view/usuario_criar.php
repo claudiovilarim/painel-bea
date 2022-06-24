@@ -29,6 +29,14 @@ require '../controller/verificarAdmin.php';
 
   <?php include './navBar.php'; ?>
 
+  <?php
+  if ($_GET['msg'] == '1') {
+    echo '<div class="alert alert-danger" role="alert">
+    <strong>Erro!</strong> Já existe um usuário com esse nome.
+    </div>';
+  }
+  ?>
+
   <div class="container">
     <h2>Criar usuário</h2>
     <?php
@@ -39,11 +47,11 @@ require '../controller/verificarAdmin.php';
     <form action="../controller/usuarioCriar.php" method="POST">
       <div class="form-group">
         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
-        <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome" required>
-        <label for="senha">Senha</label>
-        <input type="text" class="form-control" id="senha" name="senha" required>
-        <div class="form-check form-switch">
+        <label for="nome" class="mt-2">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" autocomplete="off" required>
+        <label for="senha" class="mt-2">Senha</label>
+        <input type="text" class="form-control" id="senha" name="senha" autocomplete="off" required>
+        <div class="form-check form-switch mt-2">
           <input class="form-check-input" type="checkbox" role="switch" id="administrador" name="administrador">
           <label class="form-check-label" for="administrador">Administrador</label>
         </div>

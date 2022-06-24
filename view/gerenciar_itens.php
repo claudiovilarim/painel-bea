@@ -29,6 +29,28 @@ require '../controller/verificarAdmin.php';
 
   <?php include './navBar.php'; ?>
 
+  <?php
+  if ($_GET['error'] == '1') {
+    echo '<div class="alert alert-danger" role="alert">
+    <strong>Erro!</strong> Por favor, envie uma imagem com menos de 10MB.
+    </div>';
+  }
+  ?>
+  <?php
+  if ($_GET['error'] == '2') {
+    echo '<div class="alert alert-danger" role="alert">
+    <strong>Erro!</strong> Erro ao enviar arquivo.
+    </div>';
+  }
+  ?>
+  <?php
+  if ($_GET['error'] == '3') {
+    echo '<div class="alert alert-danger" role="alert">
+    <strong>Erro!</strong> Extensão do arquivo não é permitida. Utilize JPG ou PNG.
+    </div>';
+  }
+  ?>
+
   <div class="container">
     <h2>Lista de itens</h2>
     <a href="./item_criar.php" class="btn btn-success">Adicionar item <i class="fas fa-plus"></i></a>
@@ -44,6 +66,7 @@ require '../controller/verificarAdmin.php';
             <tr>
               <th scope="col">Nome</th>
               <th scope="col"></th>
+              <th scope="col"></th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
@@ -51,10 +74,11 @@ require '../controller/verificarAdmin.php';
             <?php foreach ($itens as $item) { ?>
               <tr>
                 <td><?php echo $item['nome']; ?></td>
+                <td><img src="../assets/images/<?= $item['caminho_imagem']; ?>" width="30px" srcset="">  </td>
                 <td><?php echo $item['admin'] == 1 ? 'Administrador' : ''; ?></td>
                 <td>
-                  <a href="./item_editar.php?id=<?php echo $item['id']; ?>" class="btn btn-primary">Editar</a>
-                  <a href="./item_excluir.php?id=<?php echo $item['id']; ?>" class="btn btn-danger">Excluir</a>
+                  <a href="./item_editar.php?id=<?php echo $item['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
+                  <a href="./item_excluir.php?id=<?php echo $item['id']; ?>" class="btn btn-sm btn-danger">Excluir</a>
                 </td>
               </tr>
             <?php } ?>
